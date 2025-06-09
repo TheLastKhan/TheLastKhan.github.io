@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Admin Guide - OSI Layers Troubleshooting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="icon.png" type="image/png">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="icon.png" alt="Network Admin Guide Logo" class="logo-img">
+                <span>Network Admin Guide</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#commands">Commands</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>OSI Layers Network Troubleshooting</h1>
+            <p>Comprehensive admin guide for network problem diagnosis and solutions across all OSI layers with practical examples and simulations.</p>
+        </div>
+    </section>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3><i class="fas fa-compass"></i> Navigation</h3>
+            
+            <!-- L1 - Physical Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-plug"></i> L1 - Physical Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l1-missing-cable')"><i class="fas fa-unlink"></i> Missing/Unplugged Cable</li>
+                        <li onclick="loadContent('l1-wrong-cable')"><i class="fas fa-random"></i> Wrong Cable Type</li>
+                        <li onclick="loadContent('l1-device-off')"><i class="fas fa-power-off"></i> Device Powered Off</li>
+                        <li onclick="loadContent('l1-interface-disabled')"><i class="fas fa-ban"></i> Interface Disabled</li>
+                        <li onclick="loadContent('l1-cable-length')"><i class="fas fa-ruler-horizontal"></i> Cable Length Exceeded</li>
+                        <li onclick="loadContent('l1-port-failure')"><i class="fas fa-heart-broken"></i> Port Failure</li>
+                        <li onclick="loadContent('l1-pc-adapter-disabled')"><i class="fas fa-desktop"></i> PC Adapter Disabled</li>
+                        <li onclick="loadContent('l1-wireless-signal')"><i class="fas fa-wifi"></i> Wireless Signal Issues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- L2 - Data Link Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-project-diagram"></i> L2 - Data Link Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l2-mac-table-empty')"><i class="fas fa-table"></i> MAC Table Not Populated</li>
+                        <li onclick="loadContent('l2-wrong-vlan')"><i class="fas fa-tags"></i> Incorrect VLAN Assignment</li>
+                        <li onclick="loadContent('l2-vlan-nonexistent')"><i class="fas fa-question-circle"></i> VLAN Does Not Exist</li>
+                        <li onclick="loadContent('l2-trunk-misconfig')"><i class="fas fa-truck"></i> Trunk Port Misconfiguration</li>
+                        <li onclick="loadContent('l2-port-security')"><i class="fas fa-user-lock"></i> Port Security Blocking</li>
+                        <li onclick="loadContent('l2-duplex-speed-mismatch')"><i class="fas fa-tachometer-alt"></i> Duplex/Speed Mismatch</li>
+                        <li onclick="loadContent('l2-stp-block')"><i class="fas fa-ban"></i> STP Blocking Port</li>
+                        <li onclick="loadContent('l2-arp-issues')"><i class="fas fa-address-card"></i> ARP Table Issues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- L3 - Network Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-route"></i> L3 - Network Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l3-ip-config')"><i class="fas fa-map-marker-alt"></i> IP Address Misconfiguration</li>
+                        <li onclick="loadContent('l3-gateway-config')"><i class="fas fa-door-open"></i> Default Gateway Issues</li>
+                        <li onclick="loadContent('l3-no-routing')"><i class="fas fa-route"></i> No Routing Between Networks</li>
+                        <li onclick="loadContent('l3-subnet-misconfig')"><i class="fas fa-divide"></i> Subnet Misconfiguration</li>
+                        <li onclick="loadContent('l3-routing-protocol-misconfig')"><i class="fas fa-cogs"></i> Routing Protocol Issues</li>
+                        <li onclick="loadContent('l3-acl-block')"><i class="fas fa-filter"></i> ACL Blocking Traffic</li>
+                        <li onclick="loadContent('l3-icmp-blocked')"><i class="fas fa-ban"></i> ICMP Disabled or Blocked</li>
+                        <li onclick="loadContent('l3-routing-loop')"><i class="fas fa-sync-alt"></i> Routing Loop</li>
+                        <li onclick="loadContent('l3-ip-conflict')"><i class="fas fa-exclamation-triangle"></i> IP Address Conflict</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- L4 - Transport Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-layer-group"></i> L4 - Transport Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l4-port-blocking')"><i class="fas fa-shield-alt"></i> TCP Port Blocked by ACL</li>
+                        <li onclick="loadContent('l4-udp-failure')"><i class="fas fa-exclamation-triangle"></i> UDP Communication Fails</li>
+                        <li onclick="loadContent('l4-tcp-handshake-incomplete')"><i class="fas fa-handshake"></i> TCP Handshake Incomplete</li>
+                        <li onclick="loadContent('l4-server-app-not-listening')"><i class="fas fa-server"></i> Server Not Listening Port</li>
+                        <li onclick="loadContent('l4-client-port-mismatch')"><i class="fas fa-desktop"></i> Client Port Misconfigured</li>
+                        <li onclick="loadContent('l4-excessive-retransmissions')"><i class="fas fa-redo"></i> TCP Congestion Problem</li>
+                        <li onclick="loadContent('l4-port-translation-errors')"><i class="fas fa-exchange-alt"></i> Port Translation Error</li>
+                        <li onclick="loadContent('l4-stateful-firewall-blocks-return')"><i class="fas fa-fire-alt"></i> Firewall Rule Conflicts</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- L5 - Session Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-handshake"></i> L5 - Session Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l5-session-timeout')"><i class="fas fa-hourglass-end"></i> Session Timeout Issues</li>
+                        <li onclick="loadContent('l5-authentication')"><i class="fas fa-user-lock"></i> Authentication Failures</li>
+                        <li onclick="loadContent('l5-connection-state')"><i class="fas fa-plug"></i> Connection State Problems</li>
+                        <li onclick="loadContent('unauthorized-network-access')"><i class="fas fa-user-lock"></i> Unauthorized Access</li>
+                        <li onclick="loadContent('security-access-control')"><i class="fas fa-key"></i> Access Control Issues</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- L6 - Presentation Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-palette"></i> L6 - Presentation Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l6-encryption-issues')"><i class="fas fa-lock"></i> Encryption Problems (SSL/TLS)</li>
+                        <li onclick="loadContent('l6-data-format')"><i class="fas fa-file-code"></i> Data Format Errors</li>
+                        <li onclick="loadContent('l6-compression')"><i class="fas fa-compress-arrows-alt"></i> Compression Issues</li>
+                        <li onclick="loadContent('network-based-malware-propagation')"><i class="fas fa-bug"></i> Network Malware Spread</li>
+                        <li onclick="loadContent('security-malware')"><i class="fas fa-virus"></i> Malware Network Impact</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- L7 - Application Layer -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-desktop"></i> L7 - Application Layer</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('l7-dns-issues')"><i class="fas fa-globe"></i> DNS Resolution Problems</li>
+                        <li onclick="loadContent('l7-http-errors')"><i class="fas fa-server"></i> HTTP/HTTPS Errors</li>
+                        <li onclick="loadContent('l7-email-issues')"><i class="fas fa-envelope"></i> Email Service Problems</li>
+                        <li onclick="loadContent('l7-ftp-problems')"><i class="fas fa-file-upload"></i> FTP Connection Issues</li>
+                        <li onclick="loadContent('l7-dhcp-server-not-responding')"><i class="fas fa-network-wired"></i> DHCP Server Not Responding</li>
+                        <li onclick="loadContent('l7-telnet-ssh-refused')"><i class="fas fa-terminal"></i> SSH/Telnet Connection Refused</li>
+                        <li onclick="loadContent('ntp-amplification-attack')"><i class="fas fa-expand-arrows-alt"></i> NTP Amplification</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cyber Security -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span><i class="fas fa-shield-alt"></i> Cyber Security</span>
+                    <!-- <span class="accordion-icon">▼</span> -->
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li onclick="loadContent('security-ddos')"><i class="fas fa-umbrella-beach"></i> DDoS Attack Mitigation</li>
+                        <li onclick="loadContent('security-intrusion')"><i class="fas fa-user-secret"></i> Intrusion Detection</li>
+                        <li onclick="loadContent('security-phishing')"><i class="fas fa-fish"></i> Phishing Attack Prevention</li>
+                        <li onclick="loadContent('arp-spoofing')"><i class="fas fa-mask"></i> ARP Spoofing</li>
+                        <li onclick="loadContent('ip-spoofing')"><i class="fas fa-user-secret"></i> IP Spoofing</li>
+                        <li onclick="loadContent('mac-address-spoofing')"><i class="fas fa-id-card"></i> MAC Spoofing</li>
+                        <li onclick="loadContent('dns-spoofing')"><i class="fas fa-skull-crossbones"></i> DNS Spoofing</li>
+                        <li onclick="loadContent('dhcp-spoofing')"><i class="fas fa-virus"></i> DHCP Spoofing</li>
+                        <li onclick="loadContent('network-intrusion-detection')"><i class="fas fa-shield-virus"></i> Network IDS/IPS Alert</li>
+                        <li onclick="loadContent('bgp-route-hijacking')"><i class="fas fa-route"></i> BGP Route Hijacking</li>
+                        <li onclick="loadContent('ddos-attack')"><i class="fas fa-bomb"></i> DDoS Attack</li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <!-- Initial Welcome Content -->
+            <div class="content-section fade-in">
+                <h2><i class="fas fa-book"></i> Welcome to the Network Admin Guide</h2>
+                <div class="problem-card">
+                    <h3><i class="fas fa-sitemap"></i> Project Overview</h3>
+                    <p>This comprehensive guide covers network troubleshooting across all OSI layers (L1-L7) plus cybersecurity issues. Each section provides detailed problem analysis, root cause identification, and step-by-step solutions with practical examples and simulation notes.</p>
+                    
+                    <h4><i class="fas fa-list-ul"></i> What You'll Find Here:</h4>
+                    <ul style="margin: 0.5rem 0; padding-left: 1.5rem; list-style: disc;">
+                        <li><strong>Problem Definition:</strong> Clear description of network issues</li>
+                        <li><strong>Potential Causes:</strong> Common root causes and triggers</li>
+                        <li><strong>Solution Steps:</strong> Detailed troubleshooting procedures</li>
+                        <li><strong>Terminal Commands:</strong> Practical CLI examples</li>
+                        <li><strong>Simulation Materials:</strong> Notes on Cisco Packet Tracer scenarios</li>
+                    </ul>
+                </div>
+
+                <div class="problem-card">
+                    <h3><i class="fas fa-rocket"></i> Getting Started</h3>
+                    <p>Navigate through the sidebar to explore different OSI layers and cybersecurity topics. Click on any item to view detailed troubleshooting guides with practical examples. Use the provided commands and simulation notes to enhance your understanding.</p>
+                    
+                    <div class="terminal">
+                        <div class="terminal-header">
+                            <span class="terminal-button red"></span>
+                            <span class="terminal-button yellow"></span>
+                            <span class="terminal-button green"></span>
+                        </div>
+                        <div class="terminal-content">
+                            <span class="command">ping 8.8.8.8</span>
+                            <span class="command">traceroute google.com</span>
+                            <span class="command">netstat -an | grep LISTEN</span>
+                            <span class="command">arp -a</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="problem-card">
+                    <h3><i class="fas fa-download"></i> Cisco Packet Tracer Resources</h3>
+                    <p>Each troubleshooting guide includes simulation notes for Cisco Packet Tracer. You can download Packet Tracer files for hands-on practice or get the software itself if you don't have it installed.</p>
+                    
+                    <div class="simulation-note">
+                        <i class="fas fa-flask"></i>
+                        <span>Cisco Packet Tracer is a powerful network simulation tool that allows you to create virtual network topologies and practice troubleshooting in a safe environment.</span>
+                        <p style="font-size: 0.85em; margin-top: 0.5rem; color: var(--sepia-medium);"><em>Note: You need a Cisco Networking Academy account to download Packet Tracer.</em></p>
+                        <a href="https://www.netacad.com/courses/packet-tracer" class="download-button" target="_blank"><i class="fas fa-cloud-download-alt"></i> Get Cisco Packet Tracer</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Network Admin Guide Created by Hakan Sinal</p>
+        <div class="social-links">
+            <a href="https://github.com/TheLastKhan" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/hakan-sinal-89b822151" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://x.com/thelasttaz" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        </div>
+    </footer>
+
+    <!-- Modal for enlarged image view -->
+    <div id="imageModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <a class="modal-prev" onclick="plusModalSlides(-1)">&#10094;</a>
+        <a class="modal-next" onclick="plusModalSlides(1)">&#10095;</a>
+        <img class="modal-content" id="modalImage">
+        <div id="caption" class="modal-caption"></div>
+    </div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
+
+

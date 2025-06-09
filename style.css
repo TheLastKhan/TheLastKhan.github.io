@@ -1,0 +1,974 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --sepia-dark: #2c1810;
+    --sepia-medium: #5d4037;
+    --sepia-light: #8d6e63;
+    --sepia-lighter: #bcaaa4;
+    --sepia-lightest: #efefe9;
+    --sepia-accent: #d7ccc8;
+    --terminal-bg: #1a1a1a;
+    --terminal-green: #00ff41;
+    --hover-gold: #ffd54f;
+    --link-blue: #007bff;
+    --cisco-blue: #049fd9;
+    --cisco-dark: #005073;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--sepia-lightest) 0%, var(--sepia-accent) 100%);
+    color: var(--sepia-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(45deg, var(--sepia-dark), var(--sepia-medium));
+    color: var(--sepia-lightest);
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-content {
+    max-width: 1200px; /* 1300px */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    margin-right: 0.5rem;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.logo i {
+    margin-right: 0.5rem;
+    font-size: 2rem;
+    color: var(--hover-sepia-lightest);
+}
+
+.logo:hover {
+    transform: translateY(-2px);
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Beyaz parlama efekti */
+    /* box-shadow: 0 8px 24px rgba(0,0,0,0.15); */
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar a {
+    color: var(--sepia-lightest);
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.navbar a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: all 0.5s ease;
+}
+
+.navbar a:hover {
+    transform: translateY(-2px);
+    color: white;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.7); /* Beyaz parlama efekti */
+
+    /* background: rgba(255, 213, 79, 0.2); */
+    /* transform: translateY(-2px); */
+}
+
+/* Hero Banner */
+.hero {
+    background: linear-gradient(135deg, var(--sepia-medium), var(--sepia-light));
+    color: var(--sepia-lightest);
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="0,0 1000,0 1000,100 0,80"/></svg>');
+    background-size: cover;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: fadeInUp 1s ease;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease 0.3s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Main Layout */
+.container {
+    max-width: 1200px; /* 1300px */
+    margin: 2rem auto;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 2rem;
+    padding: 0 2rem;
+}
+
+/* Sidebar */
+.sidebar {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+}
+
+.sidebar h3 {
+    color: var(--sepia-medium);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sepia-accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.accordion-item {
+    margin-bottom: 0.5rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.accordion-header {
+    background: var(--sepia-light);
+    color: white;
+    padding: 1rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.accordion-header:hover {
+    background: var(--sepia-medium);
+    transform: translateX(5px);
+}
+
+.accordion-header.active {
+    background: var(--sepia-dark);
+}
+
+/* .accordion-icon {
+    transition: transform 0.3s ease;
+}
+
+.accordion-header.active .accordion-icon {
+    transform: rotate(180deg);
+} */
+
+.accordion-header i.fa-chevron-right {
+    transition: transform 0.3s ease;
+    /* margin-right: 3px; */
+}
+
+.accordion-header.active i.fa-chevron-right {
+    transform: rotate(90deg);
+}
+
+.accordion-content {
+    background: white;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-content.active {
+    max-height: 500px;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.accordion-content li {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--sepia-accent);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.accordion-content li i {
+    color: var(--sepia-light);
+    width: 16px;
+    text-align: center;
+}
+
+.accordion-content li:hover {
+    background: var(--sepia-lightest);
+    padding-left: 1.5rem;
+    color: var(--sepia-dark);
+}
+.accordion-content li:hover i {
+    color: var(--sepia-medium);
+}
+
+.accordion-content li:last-child {
+    border-bottom: none;
+}
+
+/* Main Content */
+.main-content {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
+    min-height: 500px;
+}
+
+.content-section {
+    margin-bottom: 3rem;
+}
+
+.content-section h2 {
+    color: var(--sepia-dark);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--sepia-accent);
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.8rem;
+}
+
+.content-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--hover-gold);
+}
+
+.problem-card {
+    background: linear-gradient(135deg, #fff, var(--sepia-lightest));
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--sepia-medium);
+    transition: all 0.3s ease;
+}
+
+.problem-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.problem-card h3 {
+    color: var(--sepia-medium);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.problem-card h4 {
+    color: var(--sepia-medium);
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem; /* Added for spacing before slideshow */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.terminal {
+    background: var(--terminal-bg);
+    color: var(--terminal-green);
+    padding: 1rem;
+    border-radius: 8px;
+    font-family: 'Courier New', monospace;
+    margin: 1rem 0;
+    position: relative;
+    overflow-x: auto;
+}
+
+.terminal-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: #333;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+}
+
+.terminal-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+.terminal-button.red { background: #ff5f56; }
+.terminal-button.yellow { background: #ffbd2e; }
+.terminal-button.green { background: #27c93f; }
+
+.terminal-content {
+    margin-top: 30px;
+    padding-top: 0.5rem;
+}
+
+.command {
+    display: block;
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.command::before {
+    content: '$ ';
+    color: var(--hover-gold);
+}
+
+.solution-steps {
+    counter-reset: step-counter;
+    margin-top: 1rem;
+}
+
+.step {
+    counter-increment: step-counter;
+    background: white;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: relative;
+    padding-left: 3rem;
+    transition: all 0.3s ease;
+}
+
+.step::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background: var(--sepia-medium);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.step:hover {
+    background: var(--sepia-lightest);
+    transform: translateX(5px);
+}
+
+.simulation-note {
+    background: var(--sepia-lightest);
+    border-left: 4px solid var(--hover-gold);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+}
+
+.simulation-note i {
+    margin-right: 0.5rem;
+    color: var(--sepia-medium);
+}
+
+.simulation-note a i {
+    margin-right: 0.5rem;
+    color: var(--hover-gold); /* This was conflicting with download button icon color */
+}
+
+/* Download Button */
+.download-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: var(--sepia-dark);
+    color: var(--sepia-lightest) !important; /* Ensure icon color override */
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* border: none; */
+    border: 3px solid var(--sepia-dark);
+    cursor: pointer;
+}
+
+.download-button i {
+    color: var(--sepia-lightest) !important; /* Ensure icon color is correct */
+}
+
+.download-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    background: var(--sepia-lightest);
+    color: var(--sepia-dark) !important; /* Ensure icon color override */
+}
+
+.download-button:hover i {
+    color: var(--sepia-dark) !important; /* Ensure icon color is correct on hover */
+}
+
+.download-button:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.download-button i {
+    font-size: 1.2rem;
+}
+
+/* Issue Card */
+.issue-card {
+    background: white;
+    border-radius: 10px;
+    padding: 1.25rem;
+    margin: 1rem 0;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--sepia-light);
+}
+
+.issue-card h4 {
+    color: var(--sepia-dark);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.issue-card p {
+    margin-bottom: 0.75rem;
+}
+
+.issue-card h5 {
+    font-size: 1rem;
+    color: var(--sepia-medium);
+    margin: 1rem 0 0.5rem 0;
+}
+
+/* Footer */
+.footer {
+    background: var(--sepia-dark);
+    color: var(--sepia-lightest);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--sepia-lightest);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background: var(--sepia-medium);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover {
+    background: var(--hover-gold);
+    color: var(--sepia-dark);
+    transform: translateY(-3px) scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 1rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .navbar ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .sidebar {
+        position: static;
+        top: auto;
+        margin-bottom: 1.5rem;
+    }
+    .main-content {
+        padding: 1.5rem;
+    }
+}
+
+/* Animation classes */
+.fade-in {
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+/* Loading Indicator */
+.loading-indicator {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: var(--sepia-medium);
+}
+.loading-indicator i {
+    margin-right: 0.5rem;
+    animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Additional CSS animations */
+@keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.terminal:hover {
+    box-shadow: 0px 0px 20px rgba(0, 255, 65, 0.3);
+}
+
+/* Pulse animation for active elements */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.accordion-header:active {
+    animation: pulse 0.3s ease;
+}
+
+/* Gradient text for special elements */
+.gradient-text {
+    background: linear-gradient(45deg, var(--sepia-medium), var(--hover-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Cisco Packet Tracer Logo */
+.cisco-logo {
+    display: inline-block;
+    margin-right: 0.5rem;
+    width: 24px;
+    height: 24px;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzA0OWZkOSIgZD0iTTEyIDJDNi40NzcgMiAyIDYuNDc3IDIgMTJzNC40NzcgMTAgMTAgMTAgMTAtNC40NzcgMTAtMTBTMTcuNTIzIDIgMTIgMnptLTEuMjg2IDQuNzc4YzEuMTI1IDAgMi4wMzguOTEzIDIuMDM4IDIuMDM4cy0uOTEzIDIuMDM4LTIuMDM4IDIuMDM4Yy0xLjEyNSAwLTIuMDM4LS45MTMtMi4wMzgtMi4wMzhzLjkxMy0yLjAzOCAyLjAzOC0yLjAzOHptMi41NzIgMTAuNDQ0Yy0xLjEyNSAwLTIuMDM4LS45MTMtMi4wMzgtMi4wMzhzLjkxMy0yLjAzOCAyLjAzOC0yLjAzOGMxLjEyNSAwIDIuMDM4LjkxMyAyLjAzOCAyLjAzOHMtLjkxMyAyLjAzOC0yLjAzOCAyLjAzOHptMi41NzItNS4yMjJjLTEuMTI1IDAtMi4wMzgtLjkxMy0yLjAzOC0yLjAzOHMuOTEzLTIuMDM4IDIuMDM4LTIuMDM4YzEuMTI1IDAgMi4wMzguOTEzIDIuMDM4IDIuMDM4cy0uOTEzIDIuMDM4LTIuMDM4IDIuMDM4eiIvPjwvc3ZnPg==');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Tab System for Multiple Issues */
+.tab-container {
+    margin: 1.5rem 0;
+}
+
+.tab-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.tab-button {
+    padding: 0.5rem 1rem;
+    background: var(--sepia-lightest);
+    border: 1px solid var(--sepia-lighter);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+    background: var(--sepia-lighter);
+}
+
+.tab-button.active {
+    background: var(--sepia-medium);
+    color: white;
+    border-color: var(--sepia-medium);
+}
+
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+/* Slideshow CSS Integration */
+.slideshow-wrapper {
+    position: relative;
+    margin: 1rem 0;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.slideshow-wrapper:hover {
+    /* transform: translateX(5px); */
+    transform: translateY(-2px);
+    box-shadow: 0 0px 20px rgb(255, 79, 79);
+}
+
+.slideshow-wrapper h3 {
+    color: var(--sepia-medium);
+    margin-bottom: 1rem;
+    margin-top: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--sepia-accent);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.slideshow-container {
+    max-width: 100%;
+    position: relative;
+    margin: auto;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Hide the images by default */
+.mySlides {
+    display: none;
+    cursor: pointer;
+}
+
+/* Show the active slide */
+.mySlides.active {
+    display: block;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.5s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+}
+
+/* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+    color: #f2f2f2;
+    font-size: 15px;
+    padding: 8px 12px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 5;
+}
+
+/* The dots/bullets/indicators */
+.dots-container {
+    text-align: center;
+    padding: 10px 0;
+}
+
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.5s ease;
+}
+
+.active-dot, .dot:hover {
+    background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {opacity: .4}
+    to {opacity: 1}
+}
+
+/* Image styling */
+.slide-image {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: contain;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Modal styles for enlarged image view */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+    transition: all 0.3s ease;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90vh;
+    margin-top: 50px;
+}
+
+.modal-caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    z-index: 1060;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal navigation buttons */
+.modal-prev, .modal-next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 30px;
+    transition: 0.5s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 1060;
+}
+
+.modal-next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.modal-prev {
+    left: 0;
+}
+
+.modal-prev:hover, .modal-next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+
+/* Responsive modal */
+@media only screen and (max-width: 700px) {
+    .modal-content {
+        width: 100%;
+        max-height: 80vh;
+    }
+    .close {
+        top: 10px;
+        right: 20px;
+        font-size: 30px;
+    }
+    .modal-prev, .modal-next {
+        padding: 10px;
+        font-size: 24px;
+    }
+}
+
+/* Active accordion item styling */
+.accordion-content li.active {
+    background: var(--sepia-lightest);
+    color: var(--sepia-dark);
+    border-left: 3px solid var(--sepia-medium);
+}
+
+.accordion-content li.active i {
+    color: var(--sepia-dark);
+}
+
+
